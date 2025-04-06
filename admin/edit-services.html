@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Services - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editor-container {
+      margin-left: 16rem;
+    }
+    .service-category {
+      border-left: 4px solid #db2777;
+    }
+    .sortable-handle {
+      cursor: move;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-800 text-white h-screen fixed">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">LOOKS Admin</h1>
+    </div>
+    <nav class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="/admin/dashboard.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-home.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-home mr-2"></i> Home Page
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-services.html" class="block px-4 py-2 rounded bg-pink-700 text-white">
+            <i class="fas fa-concierge-bell mr-2"></i> Services
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-gallery.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-images mr-2"></i> Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-contact.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-address-book mr-2"></i> Contact
+          </a>
+        </li>
+        <li class="pt-4 border-t border-gray-700 mt-4">
+          <a href="#" id="logoutBtn" class="block px-4 py-2 rounded hover:bg-gray-700 text-red-400">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="editor-container flex-1 p-8">
+    <h2 class="text-2xl font-bold mb-6">Manage Services</h2>
+    
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-medium">Service Categories</h3>
+      <button id="addCategoryBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg">
+        <i class="fas fa-plus mr-2"></i> Add Category
+      </button>
+    </div>
+
+    <!-- Categories List -->
+    <div id="categoriesList" class="space-y-4 mb-8">
+      <!-- Category 1 -->
+      <div class="service-category bg-white p-4 rounded-lg shadow">
+        <div class="flex justify-between items-center mb-4">
+          <h4 class="text-lg font-bold flex items-center">
+            <i class="fas fa-grip-lines sortable-handle mr-3 text-gray-400"></i>
+            <input type="text" value="Hair Services" class="font-bold text-lg border-b border-gray-200 focus:border-pink-500 outline-none">
+          </h4>
+          <div>
+            <button class="text-red-500 hover:text-red-700 mr-3">
+              <i class="fas fa-trash"></i>
+            </button>
+            <button class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Services in this category -->
+        <div class="ml-8 space-y-3">
+          <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+            <div class="flex items-center">
+              <i class="fas fa-grip-lines sortable-handle mr-3 text-gray-400"></i>
+              <input type="text" value="Haircut & Styling" class="border-b border-gray-200 focus:border-pink-500 outline-none">
+            </div>
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">₹</span>
+              <input type="text" value="800" class="w-20 border-b border-gray-200 focus:border-pink-500 outline-none text-right">
+              <button class="text-red-500 hover:text-red-700 ml-3">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+            <div class="flex items-center">
+              <i class="fas fa-grip-lines sortable-handle mr-3 text-gray-400"></i>
+              <input type="text" value="Hair Coloring" class="border-b border-gray-200 focus:border-pink-500 outline-none">
+            </div>
+            <div class="flex items-center">
+              <span class="text-gray-500 mr-2">₹</span>
+              <input type="text" value="1500" class="w-20 border-b border-gray-200 focus:border-pink-500 outline-none text-right">
+              <button class="text-red-500 hover:text-red-700 ml-3">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          
+          <button class="ml-8 text-sm text-pink-600 hover:text-pink-800 flex items-center">
+            <i class="fas fa-plus mr-1"></i> Add Service
+          </button>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="service-category bg-white p-4 rounded-lg shadow">
+        <div class="flex justify-between items-center mb-4">
+          <h4 class="text-lg font-bold flex items-center">
+            <i class="fas fa-grip-lines sortable-handle mr-3 text-gray-400"></i>
+            <input type="text" value="Skin Services" class="font-bold text-lg border-b border-gray-200 focus:border-pink-500 outline-none">
+          </h4>
+          <div>
+            <button class="text-red-500 hover:text-red-700 mr-3">
+              <i class="fas fa-trash"></i>
+            </button>
+            <button class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Appointment Form Settings -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Appointment Form Settings</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 mb-2">Form Title</label>
+          <input type="text" value="Book an Appointment" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Submit Button Text</label>
+          <input type="text" value="Book Now" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end">
+      <button id="saveServicesBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg">
+        Save All Changes
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    if (!localStorage.getItem('admin-authenticated')) {
+      window.location.href = '/admin/login.html';
+    }
+
+    // Add new category
+    document.getElementById('addCategoryBtn').addEventListener('click', function() {
+      const newCategory = document.createElement('div');
+      newCategory.className = 'service-category bg-white p-4 rounded-lg shadow';
+      newCategory.innerHTML = `
+        <div class="flex justify-between items-center mb-4">
+          <h4 class="text-lg font-bold flex items-center">
+            <i class="fas fa-grip-lines sortable-handle mr-3 text-gray-400"></i>
+            <input type="text" value="New Category" class="font-bold text-lg border-b border-gray-200 focus:border-pink-500 outline-none">
+          </h4>
+          <div>
+            <button class="text-red-500 hover:text-red-700 mr-3">
+              <i class="fas fa-trash"></i>
+            </button>
+            <button class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="ml-8">
+          <button class="text-sm text-pink-600 hover:text-pink-800 flex items-center">
+            <i class="fas fa-plus mr-1"></i> Add Service
+          </button>
+        </div>
+      `;
+      document.getElementById('categoriesList').appendChild(newCategory);
+    });
+
+    // Save functionality
+    document.getElementById('saveServicesBtn').addEventListener('click', function() {
+      alert('Service changes saved successfully!');
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('admin-authenticated');
+      window.location.href = '/admin/login.html';
+    });
+  </script>
+</body>
+</html>
