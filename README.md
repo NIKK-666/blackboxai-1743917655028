@@ -7,7 +7,7 @@ Built by https://www.blackbox.ai
 # LOOKS Salon - Premium Beauty Services
 
 ## Project Overview
-LOOKS Salon is a web application designed to provide users with information about premium beauty services offered at the salon. The website features a contemporary design and utilizes Tailwind CSS for a responsive and modern look. Users can explore various services, view a gallery of works, and contact the salon for bookings and inquiries.
+Ritzy Salon is a web application designed to provide users with information about premium beauty services offered at the salon. The website features a contemporary design and utilizes Tailwind CSS for a responsive and modern look. Users can explore various services, view a gallery of works, and contact the salon for bookings and inquiries.
 
 ## Installation
 To run the LOOKS Salon project locally, follow these steps:
