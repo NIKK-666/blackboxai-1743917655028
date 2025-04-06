@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Home Page - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editor-container {
+      margin-left: 16rem;
+    }
+    .editor-preview {
+      border-left: 1px solid #e2e8f0;
+    }
+    .editor-tabs .active {
+      border-bottom: 2px solid #db2777;
+      color: #db2777;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-800 text-white h-screen fixed">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">LOOKS Admin</h1>
+    </div>
+    <nav class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="/admin/dashboard.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-home.html" class="block px-4 py-2 rounded bg-pink-700 text-white">
+            <i class="fas fa-home mr-2"></i> Home Page
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-services.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-concierge-bell mr-2"></i> Services
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-gallery.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-images mr-2"></i> Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-contact.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-address-book mr-2"></i> Contact
+          </a>
+        </li>
+        <li class="pt-4 border-t border-gray-700 mt-4">
+          <a href="#" id="logoutBtn" class="block px-4 py-2 rounded hover:bg-gray-700 text-red-400">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="editor-container flex-1 flex">
+    <!-- Editor Form -->
+    <div class="w-1/2 p-8">
+      <h2 class="text-2xl font-bold mb-6">Edit Home Page</h2>
+      
+      <div class="editor-tabs flex border-b mb-6">
+        <button class="tab-btn active px-4 py-2" data-tab="hero">Hero Section</button>
+        <button class="tab-btn px-4 py-2" data-tab="services">Services</button>
+        <button class="tab-btn px-4 py-2" data-tab="cta">Call to Action</button>
+      </div>
+
+      <div id="hero-tab" class="tab-content">
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Hero Title</label>
+          <input type="text" id="heroTitle" class="w-full px-4 py-2 border rounded-lg" value="Beauty Redefined">
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Hero Subtitle</label>
+          <textarea id="heroSubtitle" class="w-full px-4 py-2 border rounded-lg" rows="3">Experience premium salon services with our expert stylists and the latest techniques.</textarea>
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Hero Button Text</label>
+          <input type="text" id="heroBtnText" class="w-full px-4 py-2 border rounded-lg" value="Book Now">
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Hero Background Image URL</label>
+          <input type="text" id="heroBgImage" class="w-full px-4 py-2 border rounded-lg" value="https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg">
+          <p class="text-sm text-gray-500 mt-1">Recommended size: 1920x1080px</p>
+        </div>
+      </div>
+
+      <div id="services-tab" class="tab-content hidden">
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Section Title</label>
+          <input type="text" id="servicesTitle" class="w-full px-4 py-2 border rounded-lg" value="Our Services">
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Section Description</label>
+          <textarea id="servicesDesc" class="w-full px-4 py-2 border rounded-lg" rows="3">We offer a wide range of beauty services to help you look and feel your best.</textarea>
+        </div>
+      </div>
+
+      <div id="cta-tab" class="tab-content hidden">
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">CTA Text</label>
+          <input type="text" id="ctaText" class="w-full px-4 py-2 border rounded-lg" value="Ready to transform your look?">
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Button Text</label>
+          <input type="text" id="ctaBtnText" class="w-full px-4 py-2 border rounded-lg" value="Book Appointment">
+        </div>
+      </div>
+
+      <button id="saveHomeBtn" class="mt-6 bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg">
+        Save Changes
+      </button>
+    </div>
+
+    <!-- Preview Pane -->
+    <div class="editor-preview w-1/2 p-8 bg-white">
+      <h3 class="text-xl font-bold mb-4">Preview</h3>
+      <div class="border rounded-lg p-4">
+        <iframe id="homePreview" src="/index.html" class="w-full h-screen border-none"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    if (!localStorage.getItem('admin-authenticated')) {
+      window.location.href = '/admin/login.html';
+    }
+
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.add('hidden');
+        });
+        document.getElementById(`${this.dataset.tab}-tab`).classList.remove('hidden');
+      });
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('admin-authenticated');
+      window.location.href = '/admin/login.html';
+    });
+
+    // Save functionality (demo - would use API calls in real app)
+    document.getElementById('saveHomeBtn').addEventListener('click', function() {
+      alert('Changes saved successfully!');
+      document.getElementById('homePreview').contentWindow.location.reload();
+    });
+  </script>
+</body>
+</html>
