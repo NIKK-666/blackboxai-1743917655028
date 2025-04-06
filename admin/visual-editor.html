@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Previous head content remains the same -->
+  <!-- ... -->
+</head>
+<body class="bg-gray-100">
+  <!-- Previous body content remains the same -->
+  <!-- ... -->
+
+  <script>
+    // Previous script content remains the same
+    // ...
+
+    // Template functionality - Fixed version
+    document.getElementById('templates-btn').addEventListener('click', function() {
+      document.getElementById('templates-dropdown').classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.template-option').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const templateName = this.textContent.trim();
+        if (templateName === 'Save Current as Template') {
+          const templateName = prompt('Enter template name:');
+          if (templateName) {
+            localStorage.setItem(`template-${templateName}`, 
+              document.getElementById('editable-area').innerHTML);
+            alert(`Template "${templateName}" saved!`);
+          }
+        } else {
+          const template = localStorage.getItem(`template-${templateName}`);
+          if (template) {
+            document.getElementById('editable-area').innerHTML = template;
+            saveState();
+          } else {
+            alert('Template not found!');
+          }
+        }
+        document.getElementById('templates-dropdown').classList.add('hidden');
+      });
+    });
+
+    // Close templates dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#templates-btn') && !e.target.closest('#templates-dropdown')) {
+        document.getElementById('templates-dropdown').classList.add('hidden');
+      }
+    });
+
+    // Rest of the script remains the same
+    // ...
+  </script>
+</body>
+</html>
