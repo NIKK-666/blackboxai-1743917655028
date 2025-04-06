@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gallery-item {
+      transition: all 0.3s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .filter-btn.active {
+      background-color: #db2777;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Component -->
+  <div id="header"></div>
+
+  <!-- Gallery Hero -->
+  <section class="bg-gray-900 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">See our latest work and transformations</p>
+    </div>
+  </section>
+
+  <!-- Gallery Filters -->
+  <section class="py-8 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-center gap-4">
+        <button class="filter-btn active px-4 py-2 rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition" data-filter="all">All</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition" data-filter="hair">Hair</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition" data-filter="makeup">Makeup</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition" data-filter="spa">Spa</button>
+        <button class="filter-btn px-4 py-2 rounded-full border border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white transition" data-filter="bridal">Bridal</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 gallery-container">
+        <!-- Hair Images -->
+        <div class="gallery-item relative group" data-category="hair">
+          <img src="https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg" alt="Hair Styling" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Hair Styling</span>
+          </div>
+        </div>
+        <div class="gallery-item relative group" data-category="hair">
+          <img src="https://images.pexels.com/photos/3065209/pexels-photo-3065209.jpeg" alt="Hair Coloring" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Hair Coloring</span>
+          </div>
+        </div>
+
+        <!-- Makeup Images -->
+        <div class="gallery-item relative group" data-category="makeup">
+          <img src="https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg" alt="Party Makeup" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Party Makeup</span>
+          </div>
+        </div>
+        <div class="gallery-item relative group" data-category="makeup">
+          <img src="https://images.pexels.com/photos/2531553/pexels-photo-2531553.jpeg" alt="Bridal Makeup" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Bridal Makeup</span>
+          </div>
+        </div>
+
+        <!-- Spa Images -->
+        <div class="gallery-item relative group" data-category="spa">
+          <img src="https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg" alt="Facial Treatment" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Facial Treatment</span>
+          </div>
+        </div>
+        <div class="gallery-item relative group" data-category="spa">
+          <img src="https://images.pexels.com/photos/4056535/pexels-photo-4056535.jpeg" alt="Massage Therapy" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Massage Therapy</span>
+          </div>
+        </div>
+
+        <!-- Bridal Images -->
+        <div class="gallery-item relative group" data-category="bridal">
+          <img src="https://images.pexels.com/photos/2658935/pexels-photo-2658935.jpeg" alt="Bridal Hairstyle" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Bridal Hairstyle</span>
+          </div>
+        </div>
+        <div class="gallery-item relative group" data-category="bridal">
+          <img src="https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg" alt="Bridal Makeover" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Bridal Makeover</span>
+          </div>
+        </div>
+        <div class="gallery-item relative group" data-category="hair">
+          <img src="https://images.pexels.com/photos/3998427/pexels-photo-3998427.jpeg" alt="Hair Treatment" class="w-full h-64 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex items-center justify-center transition rounded-lg">
+            <span class="text-white opacity-0 group-hover:opacity-100 transition text-lg font-medium">Hair Treatment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component -->
+  <div id="footer"></div>
+
+  <script>
+    // Load header and footer components
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+      
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+
+    // Gallery filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active button
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter items
+        const filter = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
