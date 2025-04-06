@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white h-screen fixed">
+      <div class="p-4 border-b border-gray-700">
+        <h1 class="text-xl font-bold">LOOKS Admin</h1>
+      </div>
+      <nav class="p-4">
+        <ul class="space-y-2">
+          <li>
+            <a href="/admin/dashboard.html" class="block px-4 py-2 rounded bg-pink-700 text-white">
+              <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/admin/edit-home.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+              <i class="fas fa-home mr-2"></i> Home Page
+            </a>
+          </li>
+          <li>
+            <a href="/admin/edit-services.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+              <i class="fas fa-concierge-bell mr-2"></i> Services
+            </a>
+          </li>
+          <li>
+            <a href="/admin/edit-gallery.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+              <i class="fas fa-images mr-2"></i> Gallery
+            </a>
+          </li>
+        <li>
+          <a href="/admin/edit-contact.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-address-book mr-2"></i> Contact
+          </a>
+        </li>
+        <li>
+          <a href="/admin/visual-editor.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-paint-brush mr-2"></i> Visual Editor
+          </a>
+        </li>
+          <li class="pt-4 border-t border-gray-700 mt-4">
+            <a href="#" id="logoutBtn" class="block px-4 py-2 rounded hover:bg-gray-700 text-red-400">
+              <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 flex-1 p-8">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-pink-50 p-4 rounded-lg border border-pink-200">
+            <h3 class="font-bold text-lg text-pink-800 mb-2">Pages</h3>
+            <p class="text-gray-600">4 editable pages</p>
+            <a href="/admin/edit-home.html" class="text-pink-600 hover:underline mt-2 block">Edit Pages →</a>
+          </div>
+          <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h3 class="font-bold text-lg text-blue-800 mb-2">Services</h3>
+            <p class="text-gray-600">12 services listed</p>
+            <a href="/admin/edit-services.html" class="text-blue-600 hover:underline mt-2 block">Manage Services →</a>
+          </div>
+          <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h3 class="font-bold text-lg text-green-800 mb-2">Gallery</h3>
+            <p class="text-gray-600">9 gallery images</p>
+            <a href="/admin/edit-gallery.html" class="text-green-600 hover:underline mt-2 block">Update Gallery →</a>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4">Quick Actions</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="/admin/edit-home.html#hero" class="bg-white border p-4 rounded-lg hover:shadow-md transition">
+              <i class="fas fa-image text-pink-500 mb-2"></i>
+              <p>Update Hero Image</p>
+            </a>
+            <a href="/admin/edit-services.html#pricing" class="bg-white border p-4 rounded-lg hover:shadow-md transition">
+              <i class="fas fa-rupee-sign text-blue-500 mb-2"></i>
+              <p>Update Pricing</p>
+            </a>
+            <a href="/admin/edit-gallery.html#upload" class="bg-white border p-4 rounded-lg hover:shadow-md transition">
+              <i class="fas fa-upload text-green-500 mb-2"></i>
+              <p>Upload New Images</p>
+            </a>
+            <a href="/admin/edit-contact.html#hours" class="bg-white border p-4 rounded-lg hover:shadow-md transition">
+              <i class="fas fa-clock text-purple-500 mb-2"></i>
+              <p>Update Business Hours</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    if (!localStorage.getItem('admin-authenticated')) {
+      window.location.href = '/admin/login.html';
+    }
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('admin-authenticated');
+      window.location.href = '/admin/login.html';
+    });
+  </script>
+</body>
+</html>
