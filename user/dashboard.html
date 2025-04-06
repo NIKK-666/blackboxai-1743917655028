@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .dashboard-container { margin-top: 5rem; }
+    .profile-card { border-left: 4px solid #db2777; }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="dashboard-container container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">My Account</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="profile-card bg-white p-6 rounded-lg shadow">
+        <div class="flex items-center mb-6">
+          <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center mr-4">
+            <i class="fas fa-user text-2xl text-pink-600"></i>
+          </div>
+          <div>
+            <h2 id="dashboardName" class="text-xl font-bold"></h2>
+            <p id="dashboardEmail" class="text-gray-600"></p>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <p><i class="fas fa-envelope text-pink-600 mr-2"></i> <span id="dashboardEmail2"></span></p>
+          <p><i class="fas fa-phone text-pink-600 mr-2"></i> <span id="dashboardPhone"></span></p>
+          <p><i class="fas fa-calendar-alt text-pink-600 mr-2"></i> Member since <span id="joinDate"></span></p>
+        </div>
+        <button id="logoutBtn" class="mt-6 text-pink-600 hover:text-pink-800">
+          <i class="fas fa-sign-out-alt mr-2"></i> Logout
+        </button>
+      </div>
+
+      <div class="md:col-span-2 bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-bold mb-6">My Appointments</h2>
+        <div class="border rounded-lg divide-y">
+          <div class="p-4 flex justify-between items-center">
+            <div>
+              <h3 class="font-medium">Haircut & Styling</h3>
+              <p class="text-sm text-gray-600">Tomorrow at 2:00 PM</p>
+            </div>
+            <button class="text-red-500 hover:text-red-700">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </div>
+        </div>
+        <a href="/services.html" class="mt-4 inline-block text-pink-600 hover:text-pink-800">
+          <i class="fas fa-plus mr-2"></i> Book New Appointment
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+      
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+      window.location.href = '/auth/login.html';
+    } else {
+      document.getElementById('dashboardName').textContent = currentUser.name;
+      document.getElementById('dashboardEmail').textContent = currentUser.email;
+      document.getElementById('dashboardEmail2').textContent = currentUser.email;
+      document.getElementById('dashboardPhone').textContent = currentUser.phone || 'Not provided';
+      document.getElementById('joinDate').textContent = new Date(currentUser.joinDate).toLocaleDateString();
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('currentUser');
+      window.location.href = '/auth/login.html';
+    });
+  </script>
+</body>
+</html>
