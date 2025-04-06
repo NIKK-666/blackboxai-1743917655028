@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Gallery - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editor-container {
+      margin-left: 16rem;
+    }
+    .gallery-item {
+      transition: all 0.2s ease;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .upload-dropzone {
+      border: 2px dashed #cbd5e0;
+    }
+    .upload-dropzone.active {
+      border-color: #db2777;
+      background-color: #fdf2f8;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-800 text-white h-screen fixed">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">LOOKS Admin</h1>
+    </div>
+    <nav class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="/admin/dashboard.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-home.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-home mr-2"></i> Home Page
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-services.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-concierge-bell mr-2"></i> Services
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-gallery.html" class="block px-4 py-2 rounded bg-pink-700 text-white">
+            <i class="fas fa-images mr-2"></i> Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-contact.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-address-book mr-2"></i> Contact
+          </a>
+        </li>
+        <li class="pt-4 border-t border-gray-700 mt-4">
+          <a href="#" id="logoutBtn" class="block px-4 py-2 rounded hover:bg-gray-700 text-red-400">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="editor-container flex-1 p-8">
+    <h2 class="text-2xl font-bold mb-6">Manage Gallery</h2>
+    
+    <!-- Gallery Settings -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Gallery Settings</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 mb-2">Gallery Title</label>
+          <input type="text" value="Our Gallery" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Gallery Description</label>
+          <input type="text" value="See our latest work and transformations" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Categories</h3>
+        <button id="addCategoryBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg">
+          <i class="fas fa-plus mr-2"></i> Add Category
+        </button>
+      </div>
+      
+      <div id="categoriesList" class="flex flex-wrap gap-2">
+        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full flex items-center">
+          All
+          <button class="ml-2 text-pink-600 hover:text-pink-800">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full flex items-center">
+          Hair
+          <button class="ml-2 text-gray-600 hover:text-gray-800">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full flex items-center">
+          Makeup
+          <button class="ml-2 text-gray-600 hover:text-gray-800">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full flex items-center">
+          Spa
+          <button class="ml-2 text-gray-600 hover:text-gray-800">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full flex items-center">
+          Bridal
+          <button class="ml-2 text-gray-600 hover:text-gray-800">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Upload Images</h3>
+      <div id="uploadDropzone" class="upload-dropzone border-dashed rounded-lg p-12 text-center cursor-pointer mb-4">
+        <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+        <p class="text-gray-600">Drag & drop images here or click to browse</p>
+        <p class="text-sm text-gray-500 mt-2">Supports JPG, PNG up to 5MB each</p>
+        <input type="file" id="fileInput" class="hidden" accept="image/*" multiple>
+      </div>
+      <div class="flex justify-between items-center">
+        <div>
+          <label class="block text-gray-700 mb-2">Default Category</label>
+          <select class="w-full md:w-auto px-4 py-2 border rounded-lg">
+            <option>Hair</option>
+            <option>Makeup</option>
+            <option>Spa</option>
+            <option>Bridal</option>
+          </select>
+        </div>
+        <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg">
+          <i class="fas fa-upload mr-2"></i> Upload
+        </button>
+      </div>
+    </div>
+
+    <!-- Gallery Images -->
+    <div class="bg-white p-6 rounded-lg shadow">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Gallery Images</h3>
+        <div class="flex items-center">
+          <label class="mr-2 text-gray-700">Filter:</label>
+          <select class="px-4 py-2 border rounded-lg">
+            <option>All Categories</option>
+            <option>Hair</option>
+            <option>Makeup</option>
+            <option>Spa</option>
+            <option>Bridal</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="galleryGrid">
+        <!-- Sample Gallery Items -->
+        <div class="gallery-item relative group" data-category="hair">
+          <img src="https://images.pexels.com/photos/3998419/pexels-photo-3998419.jpeg" alt="Hair Styling" class="w-full h-48 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition space-x-2">
+              <button class="bg-white p-2 rounded-full text-pink-600 hover:bg-pink-100">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="bg-white p-2 rounded-full text-red-600 hover:bg-red-100">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mt-2">
+            <select class="w-full text-sm border rounded">
+              <option>Hair</option>
+              <option>Makeup</option>
+              <option>Spa</option>
+              <option>Bridal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="gallery-item relative group" data-category="makeup">
+          <img src="https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg" alt="Makeup" class="w-full h-48 object-cover rounded-lg">
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition space-x-2">
+              <button class="bg-white p-2 rounded-full text-pink-600 hover:bg-pink-100">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="bg-white p-2 rounded-full text-red-600 hover:bg-red-100">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <div class="mt-2">
+            <select class="w-full text-sm border rounded">
+              <option>Makeup</option>
+              <option>Hair</option>
+              <option>Spa</option>
+              <option>Bridal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-between items-center">
+        <div class="text-gray-600">Showing 2 of 9 images</div>
+        <button class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg">
+          Load More
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-end">
+      <button id="saveGalleryBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg">
+        Save All Changes
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    if (!localStorage.getItem('admin-authenticated')) {
+      window.location.href = '/admin/login.html';
+    }
+
+    // Upload dropzone interaction
+    const dropzone = document.getElementById('uploadDropzone');
+    const fileInput = document.getElementById('fileInput');
+
+    dropzone.addEventListener('click', () => fileInput.click());
+    
+    dropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzone.classList.add('active');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('active');
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('active');
+      fileInput.files = e.dataTransfer.files;
+    });
+
+    // Add new category
+    document.getElementById('addCategoryBtn').addEventListener('click', function() {
+      const categoryName = prompt('Enter new category name:');
+      if (categoryName) {
+        const newCategory = document.createElement('span');
+        newCategory.className = 'bg-gray-100 text-gray-800 px-3 py-1 rounded-full flex items-center';
+        newCategory.innerHTML = `
+          ${categoryName}
+          <button class="ml-2 text-gray-600 hover:text-gray-800">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
+        document.getElementById('categoriesList').appendChild(newCategory);
+      }
+    });
+
+    // Save functionality
+    document.getElementById('saveGalleryBtn').addEventListener('click', function() {
+      alert('Gallery changes saved successfully!');
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('admin-authenticated');
+      window.location.href = '/admin/login.html';
+    });
+  </script>
+</body>
+</html>
