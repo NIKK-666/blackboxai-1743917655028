@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOOKS Salon - Premium Beauty Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero {
+      background-image: url('https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <div id="back-button"></div>
+  
+  <!-- Header Component -->
+  <div id="header"></div>
+
+  <!-- Hero Section -->
+  <section class="hero h-screen flex items-center relative">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="container mx-auto px-4 relative z-10 text-white">
+      <h1 class="text-5xl md:text-6xl font-bold mb-4">Beauty Redefined</h1>
+      <p class="text-xl mb-8 max-w-lg">Experience premium salon services with our expert stylists and the latest techniques.</p>
+      <a href="services.html" class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full font-medium transition inline-block">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Our Services</h2>
+      <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">We offer a wide range of beauty services to help you look and feel your best.</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div class="text-pink-600 text-4xl mb-4">
+            <i class="fas fa-cut"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Hair Styling</h3>
+          <p class="text-gray-600">Professional haircuts, coloring, and treatments tailored to your needs.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div class="text-pink-600 text-4xl mb-4">
+            <i class="fas fa-spa"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Spa Treatments</h3>
+          <p class="text-gray-600">Relaxing facials, massages, and body treatments for complete rejuvenation.</p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+          <div class="text-pink-600 text-4xl mb-4">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Makeup</h3>
+          <p class="text-gray-600">Professional makeup application for any occasion from our certified artists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component -->
+  <div id="footer"></div>
+
+  <script>
+    // Load header and footer components
+    fetch('components/header.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+      
+    fetch('components/footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+</body>
+</html>
