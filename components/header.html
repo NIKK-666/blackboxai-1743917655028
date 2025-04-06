@@ -1,0 +1,45 @@
+<header class="fixed w-full bg-white shadow-md z-50">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold text-pink-600">LOOKS</a>
+    <nav class="hidden md:block">
+      <ul class="flex space-x-8 items-center">
+        <li><a href="/" class="text-gray-800 hover:text-pink-600 transition">Home</a></li>
+        <li><a href="services.html" class="text-gray-800 hover:text-pink-600 transition">Services</a></li>
+        <li><a href="gallery.html" class="text-gray-800 hover:text-pink-600 transition">Gallery</a></li>
+        <li><a href="contact.html" class="text-gray-800 hover:text-pink-600 transition">Contact</a></li>
+        <li id="authLinks" class="ml-4">
+          <a href="/auth/login.html" class="text-gray-800 hover:text-pink-600 transition">Login</a>
+          <span class="mx-1 text-gray-400">/</span>
+          <a href="/auth/signup.html" class="text-gray-800 hover:text-pink-600 transition">Sign Up</a>
+        </li>
+        <li id="userProfile" class="hidden ml-4">
+          <div class="flex items-center">
+            <span id="userName" class="mr-2"></span>
+            <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center">
+              <i class="fas fa-user text-pink-600"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <button class="md:hidden text-gray-800">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<script>
+  // Check user authentication state
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const authLinks = document.getElementById('authLinks');
+  const userProfile = document.getElementById('userProfile');
+  const userName = document.getElementById('userName');
+
+  if (currentUser) {
+    authLinks.style.display = 'none';
+    userProfile.style.display = 'block';
+    userName.textContent = currentUser.name.split(' ')[0];
+  }
+</script>
