@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Contact - LOOKS Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editor-container {
+      margin-left: 16rem;
+    }
+    .contact-info-card {
+      border-left: 4px solid #db2777;
+    }
+    .business-hours li:not(:last-child) {
+      border-bottom: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-800 text-white h-screen fixed">
+    <div class="p-4 border-b border-gray-700">
+      <h1 class="text-xl font-bold">LOOKS Admin</h1>
+    </div>
+    <nav class="p-4">
+      <ul class="space-y-2">
+        <li>
+          <a href="/admin/dashboard.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-home.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-home mr-2"></i> Home Page
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-services.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-concierge-bell mr-2"></i> Services
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-gallery.html" class="block px-4 py-2 rounded hover:bg-gray-700">
+            <i class="fas fa-images mr-2"></i> Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/admin/edit-contact.html" class="block px-4 py-2 rounded bg-pink-700 text-white">
+            <i class="fas fa-address-book mr-2"></i> Contact
+          </a>
+        </li>
+        <li class="pt-4 border-t border-gray-700 mt-4">
+          <a href="#" id="logoutBtn" class="block px-4 py-2 rounded hover:bg-gray-700 text-red-400">
+            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="editor-container flex-1 p-8">
+    <h2 class="text-2xl font-bold mb-6">Edit Contact Page</h2>
+    
+    <!-- Contact Information -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="contact-info-card bg-white p-4 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="bg-pink-100 text-pink-600 p-3 rounded-full mr-4">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2">Address</h4>
+              <textarea class="w-full px-4 py-2 border rounded-lg" rows="3">123 Beauty Street
+Mumbai, Maharashtra 400001</textarea>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-info-card bg-white p-4 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="bg-pink-100 text-pink-600 p-3 rounded-full mr-4">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2">Phone</h4>
+              <input type="text" class="w-full px-4 py-2 border rounded-lg mb-2" value="+91 98765 43210">
+              <input type="text" class="w-full px-4 py-2 border rounded-lg" value="+91 22 1234 5678">
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-info-card bg-white p-4 rounded-lg">
+          <div class="flex items-start mb-4">
+            <div class="bg-pink-100 text-pink-600 p-3 rounded-full mr-4">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-2">Email</h4>
+              <input type="email" class="w-full px-4 py-2 border rounded-lg mb-2" value="info@lookssalon.in">
+              <input type="email" class="w-full px-4 py-2 border rounded-lg" value="bookings@lookssalon.in">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Settings -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Map Settings</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 mb-2">Map Title</label>
+          <input type="text" value="Find Us" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Google Maps Embed Code</label>
+          <textarea class="w-full px-4 py-2 border rounded-lg font-mono text-sm" rows="4">
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.2372000000003!2d72.828214!3d18.9758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDU4JzMyLjgiTiA3MsKwNDknNDEuNiJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+  width="100%" 
+  height="400" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
+          </textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Business Hours -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Business Hours</h3>
+      <ul class="business-hours divide-y divide-gray-200">
+        <li class="py-3 flex justify-between items-center">
+          <div class="w-1/3">
+            <input type="text" value="Monday - Friday" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <div class="w-1/3">
+            <input type="text" value="10:00 AM - 8:00 PM" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <button class="text-red-500 hover:text-red-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+        <li class="py-3 flex justify-between items-center">
+          <div class="w-1/3">
+            <input type="text" value="Saturday" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <div class="w-1/3">
+            <input type="text" value="9:00 AM - 9:00 PM" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <button class="text-red-500 hover:text-red-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+        <li class="py-3 flex justify-between items-center">
+          <div class="w-1/3">
+            <input type="text" value="Sunday" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <div class="w-1/3">
+            <input type="text" value="10:00 AM - 6:00 PM" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <button class="text-red-500 hover:text-red-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+        <li class="py-3 flex justify-between items-center">
+          <div class="w-1/3">
+            <input type="text" value="Public Holidays" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <div class="w-1/3">
+            <input type="text" value="11:00 AM - 5:00 PM" class="w-full px-4 py-2 border rounded-lg">
+          </div>
+          <button class="text-red-500 hover:text-red-700">
+            <i class="fas fa-times"></i>
+          </button>
+        </li>
+      </ul>
+      <button class="mt-4 text-pink-600 hover:text-pink-800 flex items-center">
+        <i class="fas fa-plus mr-2"></i> Add New Time Slot
+      </button>
+    </div>
+
+    <!-- Contact Form Settings -->
+    <div class="bg-white p-6 rounded-lg shadow mb-8">
+      <h3 class="text-xl font-bold mb-4">Contact Form Settings</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 mb-2">Form Title</label>
+          <input type="text" value="Send Us a Message" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Submit Button Text</label>
+          <input type="text" value="Send Message" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-2">Success Message</label>
+          <textarea class="w-full px-4 py-2 border rounded-lg" rows="2">Thank you for your message! We will get back to you soon.</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end">
+      <button id="saveContactBtn" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-2 rounded-lg">
+        Save All Changes
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Check authentication
+    if (!localStorage.getItem('admin-authenticated')) {
+      window.location.href = '/admin/login.html';
+    }
+
+    // Add new business hour slot
+    document.querySelector('.business-hours + button').addEventListener('click', function() {
+      const newSlot = document.createElement('li');
+      newSlot.className = 'py-3 flex justify-between items-center';
+      newSlot.innerHTML = `
+        <div class="w-1/3">
+          <input type="text" placeholder="Day(s)" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="w-1/3">
+          <input type="text" placeholder="Hours" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <button class="text-red-500 hover:text-red-700">
+          <i class="fas fa-times"></i>
+        </button>
+      `;
+      document.querySelector('.business-hours').appendChild(newSlot);
+    });
+
+    // Save functionality
+    document.getElementById('saveContactBtn').addEventListener('click', function() {
+      alert('Contact page changes saved successfully!');
+    });
+
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('admin-authenticated');
+      window.location.href = '/admin/login.html';
+    });
+  </script>
+</body>
+</html>
